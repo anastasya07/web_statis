@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en"><!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rumah Kata</title>
+    
+    
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap" rel="stylesheet">
+    
+    <!--Feather Icons-->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!--My Style-->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<style>
+    :root {
+    --primary:hsl(44, 60%, 50%);
+    --bg: #010101; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+} 
+
+body {
+    font-family: 'Poppins', 'Times New Roman';
+    background-color: var(--bg);
+    color: #fff;
+    min-height: 3000px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.4rem 7%;
+    background-color: rgb(108, 39, 39);
+    border-bottom: 1px solid #0c0c0c;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+
+}
+.navbar .navbar-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.navbar .navbar-logo span {
+    color: var(--primary);
+}
+
+.navbar .navbar-nav a {
+    color: #fff;
+    display: inline-block;
+    font-size: 1.3rem;
+    margin: 0 1rem;
+}
+
+.navbar .navbar-nav a:hover {
+    color: var(--primary);
+}
+
+.navbar .navbar-nav a::after {
+    content: '';
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid var(--primary);
+    transform: scaleX(0);
+    transition: 0.2s linear;
+}
+
+.navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.5);
+}
+
+.navbar .navbar-extra a {
+    color: #fff;
+    margin: 0 0.5rem;
+}
+
+.navbar .navbar-extra a:hover {
+    color: var(--primary);
+}
+
+#buku-menu {
+    display: none;
+}
+
+/* Navbar Search Form */
+.navbar .seacrh-form {
+    position: absolute;
+    top: 100%;
+    right: 7%;
+    background-color: #fff;
+    will-change: 50rem;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    transform: scaleY();
+    transform-origin: top;
+    transition: 0.3s;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url(image/brownn.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 40%;
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(1,1,3, 1) 8%, rgba(255, 255, 255, 0) 55%);
+}
+
+.hero .content {
+    padding: 1.4rem 7%;
+    max-width: 60rem;
+}
+
+.hero .content h1 {
+    font-size: 5em;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+    line-height: 1.2;
+}
+
+.hero .content h1 span {
+    color: var(--primary); 
+}
+
+.hero .content p {
+    font-size: 1.6rem;
+    color: #fff;
+    margin-top: 1rem;
+    line-height: 1.4;
+    font-weight: 100;
+    text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
+    mix-blend-mode: difference;
+}
+
+.hero .content .cta {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 3px rgba(1px 1px 3px rgba (1,1,3) 0.5);
+}
+
+/* About Section */
+.about, 
+.buku, 
+.kontak {
+    padding: 9rem 7% 1.4rem;
+}
+
+.about h2, 
+.buku h2,
+.kontak h2 {
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 3rem;
+}
+
+.about h2 span, 
+.buku h2 span,
+.kontak h2 span {
+    color: var(--primary);
+}
+
+.about .row {
+    display: flex;
+} 
+
+.about .row .about-img {
+    flex: 1 1 45rem;
+}
+
+.about .row .about-img {
+    width: 100%;
+}
+
+.about .row .content {
+    flex: 1 1 35rem;
+    padding: 0 1rem;
+}
+
+.about .row .content h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.about .row .content p {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    font-weight: 100;
+    line-height: 1.6;
+}
+
+/* Buku Section */
+.buku p {
+    text-align: center;
+    max-width: 30rem;
+    margin: auto;
+    font-weight: 100;
+    line-height: 1.6;
+}
+
+.buku .row {
+    flex-wrap: wrap;
+    margin-top: 5rem;
+    justify-content: center;
+}
+
+.buku .row .buku-card {
+    text-align: center;
+    padding-bottom: 4rem;
+}
+
+.buku .row .buku-card img {
+    width: 80%;
+    text-align: center;
+}
+
+.buku .row .buku-card .buku-card-title {
+    margin-top: 1.5rem;
+}
+
+/* Contact Section */
+.contact .row {
+    display: flex;
+    margin-top: 2rem;
+    background-color: #222;
+}
+
+.contact .row .map {
+    flex: 1 1 45rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.contact .row form {
+    flex: 1 1 45rem;
+    padding: 5rem 2rem;
+    text-align: center;
+}
+
+.contact .row form .input-group {
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    background-color: var(--bg);
+    border: 1px solid #fff;
+    padding-left: 2rem;
+}
+
+
+.contact .row form .input-group input {
+    width: 1005;
+    padding: 2rem;
+    font-size: 1.7rem;
+    background: none;
+    color: #fff;
+}
+
+.contact .row form .btn {
+    margin-top: 3rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.7rem;
+    color: #fff;
+    background-color: var(--primary);
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    background-color: rgb(108, 39, 39);
+    text-align: center;
+    padding: 1rem 0 3rem;
+    margin-top: 3rem 3rem;
+}
+
+footer .socials {
+    padding: 1rem 0;
+}
+
+footer .socials a {
+    color: #fff;
+    margin: 1rem;
+}
+
+footer.socials a:hover,
+footer.links a:hover {
+    color: var(--bg);
+}
+
+footer .links {
+    margin-bottom: 1.4rem;
+
+} 
+
+footer .links a {
+    color: #fff;
+    padding: 0.7rem 1rem;
+}
+
+footer .credit {
+    font-size: 0.9rem;
+}
+
+footer .credit a {
+    color: var(--bg);
+    font-weight: 700;
+}
+
+/* Media Queries*/
+/* Laptop */
+@media (max-width:1366px) {
+    html {
+        font-size: 75%;
+    }
+}
+
+/* Tablet */
+@media (max-width:768px) {
+    html {
+        font-size: 62.5%;
+    }
+
+    #buku-menu {
+        display: inline-block;
+    }
+
+    .navbar.navbar-nav {
+       position: absolute;
+       top: 100%;
+       right: -100%;
+       background-color: #fff;
+       width: 30rem;
+       height: 100vh;
+       transition: 0.3s;
+    }
+}
+
+.navbar .navbar-nav.active {
+    right: 0;
+}
+
+.navbar.navbar-nav a {
+    color: var(--bg);
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 2rem;
+}
+
+.navbar .navbar-nav a::after {
+    transform-origin: 0 0;
+}
+
+.navbar .navbar-nav a:hover::after {
+    transform: scaleX(0.2);
+}
+
+.navbar .seacrh-form {
+    width: 90%;
+    right: 2rem;
+}
+
+.about .row {
+    flex-wrap: wrap;
+}
+
+.about .row .about-img img {
+    height: 30rem;
+    object-fit: cover;
+    object-position: center;
+}
+
+.about .row .content {
+    padding: 0;
+}
+
+.about .row .content h3 {
+    margin-top: 1rem;
+    font-size: 2rem;
+}
+
+.about .row .content p {
+    font-size: 1.6rem;
+    
+}
+
+.buku p {
+    font-size: 1.2rem;
+}
+
+.contact .row {
+    flex-wrap: wrap;
+}
+
+.contact .row .map {
+    height: 30rem;
+}
+
+.contact .row form {
+    padding-top: 0;
+}
+
+/* Mobile Phone */
+@media (max-width:450px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+</style>
+
+<body>
+
+    <body>
+        <!--Navbar start-->
+        <nav class="navbar">
+          <a href="#" class="navbar-logo">rumah<span>kata.</span></a>
+    
+          <div class="navbar-nav">
+            <a href="#home">Beranda</a>
+            <a href="#about">Tentang</a>
+            <a href="#buku">Buku</a>
+            <a href="#contact">Kontak</a>
+          </div>
+    
+          <div class="navbar-extra">
+            <a href="#" id="search"><i data-feather="search"></i></a>
+            <a href="#" id="shopping-cart"><i data-feather="shopping-cart"></i></a>
+            <a href="#" id="buku-menu"><i data-feather="menu"></i></a>
+          </div>
+        </nav>
+        <!--Navbar end-->
+
+    <!-- Search Form Start -->
+    <div class="search-form">
+        <input type="search" id="search-box" placeholder="search...." />
+    </div>
+    <!-- Search Form End -->
+
+    <!-- Hero Section Start-->
+    <section class="hero" id="home">
+        <main class="content">
+            <h1>Mari Membaca <span>Buku</span></h1>
+            <p>Cuma perlu satu buku untuk jatuh cinta pada membaca. Cari buku itu. Mari jatuh cinta. 
+                <br>
+                <p>—Najwa Shihab</p>
+            <a href="#" class="cta">Lihat</a>
+        </main>
+    </section>
+    <!-- Hero Section End-->
+
+<!-- About Section Start-->
+<section id="about" class="about">
+    <h2><span>Tentang</span> rumahkata.</h2> 
+    
+    <div class="row">
+        <div class="about-img">
+            <img src="image/aboutt.jpg" alt="Tentang Kami">
+        </div>
+        <div class="content">
+            <h3>Kenapa memilih kami?</h3>
+            <p>rumahkata. merupakan sebuah toko buku berbasis online yang memudahkan konsumen dalam mencari buku yang mereka mau dari smartphone/laptop mereka. Ada berbagai macam keuntungan berbelanja di rumahkata. dengan kualitas buku 100% original.</p>
+            <p>toko ini menyediakan buku dan majalah impor berkualitas tinggi kepada pembaca di Indonesia. Selama bertahun-tahun, jaringan kami telah berkembang dan kini kami memiliki lebih dari 45 gerai ritel di kawasan perbelanjaan strategis di seluruh Indonesia termasuk bandara dan mal.</p>
+        </div>
+    </div>
+    </div>
+<!-- About Section End-->
+
+<!-- Buku Section Start-->
+<section id="buku" class="buku">
+    <h2>Buku<span> Kami</span></h2>
+
+    <div class="row">
+    <div class="buku-card">
+        <img src="image/buku kata.jpg" 
+        alt="Kata" class="buku-card-img">
+        <h3 class="buku-card-title">Kata</h3>
+        <p class="buku-card-price">IDR 84.150</p>
+        </div>
+    <div class="buku-card">
+        <img src="image/buku egosentris.jpg" 
+        alt="Egosentris" class="buku-card-img">
+        <h3 class="buku-card-title">Egosentris</h3>
+        <p class="buku-card-price">IDR 82.500</p>
+        </div>
+    <div class="buku-card">
+        <img src="image/buku namiya.jpg" 
+        alt="Toko Kelontong Namiya" class="buku-card-img">
+        <h3 class="buku-card-title">Toko Kelontong Namiya</h3>
+        <p class="buku-card-price">IDR 129.000</p>
+        </div>
+    <div class="buku-card">
+        <img src="image/buku aan.jpg" 
+        alt="Kukila" class="buku-card-img">
+        <h3 class="buku-card-title">Kukila</h3>
+        <p class="buku-card-price">IDR 45.000</p>
+        </div>
+    <div class="buku-card">
+        <img src="image/buku sapardi.jpg" 
+        alt="Bilang Begini, Maksudnya Begitu" class="buku-card-img">
+        <h3 class="buku-card-title">Bilang Begini, Maksudnya Begitu</h3>
+        <p class="buku-card-price">IDR 47.200</p>
+        </div>
+    <div class="buku-card">
+        <img src="image/buku rumi.jpg" 
+        alt="Pukul Setengah Lima" class="buku-card-img">
+        <h3 class="buku-card-title">Passage Into Silence</h3>
+        <p class="buku-card-price">IDR 68.000</p>
+        </div>
+    <div class="buku-card">
+        <img src="image/buku joko.jpg" 
+        alt="Kekasihku" class="buku-card-img">
+        <h3 class="buku-card-title">Kekasihku</h3>
+        <p class="buku-card-price">IDR 54.000</p>
+        </div>
+    <div class="buku-card">
+        <img src="image/buku coolen.jpg" 
+        alt="It Ends With Us" class="buku-card-img">
+        <h3 class="buku-card-title">It Ends With Us</h3>
+        <p class="buku-card-price">IDR 232.200</p>
+        </div>
+</section>
+<!--Buku Section End-->
+
+<!--Contact Section Start -->
+<section id="contact" class="contact">
+    <h2><span>Kontak</span> Hubung</h2>
+
+    <div class="row">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d83998.96778005316!2d2.2646337223057538!3d48.858825491519845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e1f06e2b70f%3A0x40b82c3688c9460!2sParis%2C%20France!5e0!3m2!1sen!2sid!4v1700340375143!5m2!1sen!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
+    </div>
+
+    <form action="">
+        <div class="input-group">
+            <i data-feather="user"></i>
+            <input type="text" placeholder="nama">
+        </div>
+        <div class="input-group">
+            <i data-feather="mail"></i>
+            <input type="text" placeholder="email">
+        </div>
+        <div class="input-group">
+            <i data-feather="phone"></i>
+            <input type="text" placeholder="nomor hp">
+        </div>
+        <button onclick="myFunction()" type="submit" class="btn">Kirim Pesan</button>
+    </form>
+<!--Contact Section End -->
+
+<!-- Footer Start -->
+<footer>
+    <div class="socials">
+        <a href="#"><i data-feather="instagram"></i></a>
+        <a href="#"><i data-feather="youtube"></i></a>
+    </div>
+
+    <div class="links">
+        <a href="#home">Beranda</a>
+        <a href="#about">Tentang</a>
+        <a href="#book">Buku</a>
+        <a href="#contact">Kontak</a>
+    </div>
+
+    <div class="credit">
+        <p>Created by <span>rumah</span>kata</a>. | &copy; 2023</p>
+    </div>
+</footer>
+<!-- Footer Start -->
+
+    <!--Feather Icons-->
+    <script>
+        feather.replace()
+      </script>
+
+      <!-- My Javascript -->
+      <script src="script.js"></script>
+
+
+</body>
+</html>
